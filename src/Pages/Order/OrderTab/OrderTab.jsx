@@ -6,7 +6,7 @@ const OrderTab = ({items}) => {
         <div className='grid md:grid-cols-3 gap-3'>
             {
                 items.map(item => <FoodCard
-                    key={item.id}
+                    key={item._id}
                     item={item}
                 ></FoodCard>)
             }
