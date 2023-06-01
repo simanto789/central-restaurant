@@ -3,11 +3,11 @@ import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-
 const MyCart = () => {
     const [cart, refetch] = useCart();
     console.log(cart);
-    const total = cart.reduce((sum, item) => item.price + sum, 0)
+    // how does reduce work!!!
+    const total = cart.reduce((sum, item) => item.price + sum, 0);
 
     const handleDelete = item => {
         Swal.fire({
@@ -37,12 +37,13 @@ const MyCart = () => {
             }
         })
     }
+
     return (
         <div className="w-full">
             <Helmet>
-                <title>Central Restaurant | My Cart</title>
+                <title>Bistro Boss | My Cart</title>
             </Helmet>
-            <div className="uppercase font-semibold flex justify-evenly h-[60px] mb-7 items-center">
+            <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
                 <h3 className="text-3xl">Total Items: {cart.length}</h3>
                 <h3 className="text-3xl">Total Price: ${total}</h3>
                 <button className="btn btn-warning btn-sm">PAY</button>
@@ -52,12 +53,11 @@ const MyCart = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th> # </th>
+                            <th>#</th>
                             <th>Food</th>
                             <th>Item Name</th>
                             <th>Price</th>
                             <th>Action</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -71,7 +71,7 @@ const MyCart = () => {
                                 <td>
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} />
+                                            <img src={item.image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
                                 </td>
@@ -80,10 +80,11 @@ const MyCart = () => {
                                 </td>
                                 <td className="text-end">${item.price}</td>
                                 <td>
-                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-500 text-white"><FaTrashAlt></FaTrashAlt></button>
+                                    <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                             </tr>)
                         }
+
 
                     </tbody>
                 </table>
